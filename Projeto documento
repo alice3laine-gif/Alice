@@ -92,21 +92,8 @@
 
       <section aria-label="Título">
         <p class="center">
-          <b>RELATÓRIO DE EMOLUMENTOS</b><br />
-          <b>
-            <condicao se="protocolo.dominio" igual="PROTOCOLO_RI">
-              <condicao se="protocolo.tipo" igual="ORCAMENTO">Orçamento nº:</condicao>
-              <condicao se="protocolo.tipo" igual="EXAME_CALCULO">Exame nº:</condicao>
-              <condicao se="protocolo.tipo" igual="NORMAL">Protocolo nº:</condicao>
-            </condicao>
-
-            <condicao se="protocolo.dominio" igual="CERTIDAO_RI">
-              <condicao se="protocolo.tipo" igual="ORCAMENTO">Orçamento Certidão:</condicao>
-              <condicao se="protocolo.tipo" igual="NORMAL">Pedido de Certidão nº:</condicao>
-            </condicao>
-
-            <numero valor="protocolo.codigo" decimal="0" />
-          </b>
+          <b>RELATÓRIO DE EMOLUMENTOS</b><br>
+          <b>Protocolo nº: 100 </b>
         </p>
       </section>
 
@@ -118,15 +105,13 @@
           10/01/2025
         </p>
 
-        <condicao se="protocolo.solicitante.nome">
-          <p><b>Requerente:</b> $(protocolo.solicitante.nome)</p>
-        </condicao>
+        
+          <p><b>Requerente:</b> Alice </p>
 
-        <p><b>Vínculos:</b> <fichas>…</fichas></p>
+        <p><b>Vínculos:</b> XXXX </p>
 
-        <condicao se="protocolo.checklist.OBS">
-          <p><b>Observação:</b> <texto-formatado texto="protocolo.checklist.OBS" /></p>
-        </condicao>
+        
+          <p><b>Observação:</b> Anotações </p>
       </section>
 
       <div class="spacer-lg"></div>
@@ -144,10 +129,18 @@
               <th>Total</th>
             </tr>
           </thead>
-          <tbody>
-            
-            <custas>…</custas>
-          </tbody>
+           <thead>
+            <tr>
+             <th>1A</th>
+              <th>2A</th>
+              <th>3B</th>
+              <th>4C</th>
+              <th>5D</th>
+              <th>6E</th>
+              <th>7F</th>
+            </tr>
+          </thead>
+
         </table>
       </section>
 
@@ -155,8 +148,7 @@
 
       <section aria-label="Movimentações">
         <p><b>Histórico de Depósitos/Devoluções:</b></p>
-        <repetidor lista="movimentacoes" nome="movimento">…</repetidor>
-
+        XXXXXXXXXXXX
         <p><b>Total:</b> R$ 10,00</p>
       </section>
 
@@ -164,8 +156,7 @@
 
       <section aria-label="Assinatura">
         <p class="center">
-          $(cartorio.cidade),
-          <data valor="hoje" formato="DD {de} MMMM {de} YYYY" />
+          Cidade X, 18/02/2026
         </p>
 
         <hr class="linha-assinatura" />
@@ -212,7 +203,7 @@
 
       <section aria-label="Recebimento">
         <p class="center">Recebimento do documento</p>
-        <p class="center">$(cartorio.cidade), ___/___/____</p>
+        <p class="center">CARTÓRIO, ___/___/____</p>
 
         <hr class="linha-assinatura" />
         <p class="center">ASSINATURA DO RECEBEDOR</p>
