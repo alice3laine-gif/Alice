@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Relatório de Emolumentos</title>
+
+  <style>
+    @page { size: A4; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 12px;
+      color: #000;
+    }
+
+    body { height: auto; }
+
+    p {
+      margin: 0;
+      padding: 0 0 5px;
+      line-height: 1;
+      text-align: justify;
+    }
+
+    .center { text-align: center; }
+    .right { text-align: right; }
+
+    header.cabecalho {
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .spacer-lg { margin-top: 24px; }
+    .spacer-xl { margin-top: 36px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    th {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 2px 1px;
+      font-size: 12px;
+    }
+
+    hr.linha-assinatura {
+      width: 250px;
+      border: 0;
+      border-top: 1px solid #000;
+      margin: 16px auto 6px;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+      border: 0;
+      margin: 20px 0;
+    }
+
+    table, tr, td, th { break-inside: avoid; page-break-inside: avoid; }
+  </style>
+</head>
+
+<body>
+  <!-- ===================== VIA USUÁRIO ===================== -->
+  <article class="documento">
+
+    <header class="cabecalho">
+      <div class="center"><strong>CARTÓRIO</strong></div>
+
+      <div class="center">
+        <p class="center"><b>OFÍCIO DE REGISTRO DE IMÓVEIS</b></p>
+        <p class="center"><b>REGISTRADOR(A)</b></p>
+        <p class="center"><small><i>ENDEREÇO DO CARTÓRIO</i></small></p>
+        <p class="center"><small><i>CONTATOS DO CARTÓRIO</i></small></p>
+      </div>
+    </header>
+
+    <main>
+      <div class="spacer-xl"></div>
+
+      <section aria-label="Título">
+        <p class="center">
+          <b>RELATÓRIO DE EMOLUMENTOS</b><br />
+          <b>
+            <condicao se="protocolo.dominio" igual="PROTOCOLO_RI">
+              <condicao se="protocolo.tipo" igual="ORCAMENTO">Orçamento nº:</condicao>
+              <condicao se="protocolo.tipo" igual="EXAME_CALCULO">Exame nº:</condicao>
+              <condicao se="protocolo.tipo" igual="NORMAL">Protocolo nº:</condicao>
+            </condicao>
+
+            <condicao se="protocolo.dominio" igual="CERTIDAO_RI">
+              <condicao se="protocolo.tipo" igual="ORCAMENTO">Orçamento Certidão:</condicao>
+              <condicao se="protocolo.tipo" igual="NORMAL">Pedido de Certidão nº:</condicao>
+            </condicao>
+
+            <numero valor="protocolo.codigo" decimal="0" />
+          </b>
+        </p>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+      <section aria-label="Dados do protocolo">
+        <p>
+          <b>Cadastro:</b>
+          10/01/2025
+        </p>
+
+        <condicao se="protocolo.solicitante.nome">
+          <p><b>Requerente:</b> $(protocolo.solicitante.nome)</p>
+        </condicao>
+
+        <p><b>Vínculos:</b> <fichas>…</fichas></p>
+
+        <condicao se="protocolo.checklist.OBS">
+          <p><b>Observação:</b> <texto-formatado texto="protocolo.checklist.OBS" /></p>
+        </condicao>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+      <section aria-label="Itens e custas">
+        <table class="detalhamento-itens">
+          <thead>
+            <tr>
+              <th>Qtd</th>
+              <th>Item</th>
+              <th>Selo</th>
+              <th>FRJ</th>
+              <th>ISS</th>
+              <th>Emolumento</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <custas>…</custas>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+      <section aria-label="Movimentações">
+        <p><b>Histórico de Depósitos/Devoluções:</b></p>
+        <repetidor lista="movimentacoes" nome="movimento">…</repetidor>
+
+        <p><b>Total:</b> R$ 10,00</p>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+      <section aria-label="Assinatura">
+        <p class="center">
+          $(cartorio.cidade),
+          <data valor="hoje" formato="DD {de} MMMM {de} YYYY" />
+        </p>
+
+        <hr class="linha-assinatura" />
+        <p class="center">RESPONSÁVEL</p>
+      </section>
+    </main>
+
+    <footer>
+      <p class="right">VIA USUÁRIO</p>
+    </footer>
+  </article>
+
+  <hr class="page-break" />
+
+  <!-- ===================== VIA CARTÓRIO ===================== -->
+  <article class="documento">
+
+    <header class="cabecalho">
+      <div class="center">
+        <p class="center"><b>OFÍCIO DE REGISTRO DE IMÓVEIS</b></p>
+        <p class="center"><b>REGISTRADOR(A)</b></p>
+        <p class="center"><small><i>ENDEREÇO DO CARTÓRIO</i></small></p>
+        <p class="center"><small><i>CONTATOS DO CARTÓRIO</i></small></p>
+      </div>
+    </header>
+
+    <main>
+      <div class="spacer-xl"></div>
+
+      <section aria-label="Título">
+        <p class="center"><b>RELATÓRIO DE EMOLUMENTOS</b></p>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+     
+      <section aria-label="Certificação">
+        <condicao se="assinando">
+          Certificado digitalmente por RESPONSÁVEL
+        </condicao>
+      </section>
+
+      <div class="spacer-lg"></div>
+
+      <section aria-label="Recebimento">
+        <p class="center">Recebimento do documento</p>
+        <p class="center">$(cartorio.cidade), ___/___/____</p>
+
+        <hr class="linha-assinatura" />
+        <p class="center">ASSINATURA DO RECEBEDOR</p>
+      </section>
+    </main>
+
+    <footer>
+      <p class="right">VIA CARTÓRIO</p>
+    </footer>
+
+  </article>
+</body>
+</html>
