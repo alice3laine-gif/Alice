@@ -169,7 +169,7 @@
     </footer>
   </article>
 
-  <hr class="page-break" />
+  <hr class="page-break" style="border: 3px dashed #ccc"  />
 
   <!-- ===================== VIA CARTÓRIO ===================== -->
   <article class="documento">
